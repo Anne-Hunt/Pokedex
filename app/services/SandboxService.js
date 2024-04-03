@@ -20,12 +20,18 @@ class SandboxService {
         AppState.sandPokemons = mySandPokemons
     }
 
-    setActivePoke() {
-        throw new Error("Method not implemented.");
+    async setActivePoke(pokeName) {
+        let response = await api.get('api', `/pokemon/${pokeName}`)
+        console.log('setting to active', response)
+        const activePoke = response.data
+        AppState.activePokemon = activePoke
+        console.log(AppState.activePokemon)
+
     }
 
-    trashPoke(pokeId) {
-        throw new Error("Method not implemented.");
+    trashPoke(pokeName) {
+        let pokemonToTrash = ''
+
     }
 
 }

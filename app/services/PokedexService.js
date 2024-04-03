@@ -22,13 +22,13 @@ class PokedexService {
         }
     }
 
-    async setActivePoke() {
-
+    async setActivePoke(pokeName) {
+        let response = await PokemonAPI.get('PokemonAPI', `/pokemon/${pokeName}`)
+        console.log('setting to active', response)
+        const activePoke = response.data
+        AppState.activePokemon = activePoke
+        console.log(AppState.activePokemon)
     }
-
-
-
-
 
 }
 
