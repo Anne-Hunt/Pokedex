@@ -3,7 +3,7 @@ import { Pop } from "../utils/Pop.js"
 
 // eslint-disable-next-line no-undef
 // @ts-ignore
-const PokemonAPI = axios.create({ // this will always give you an error, because axios only exists once the page loads
+const PokemonAPI = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/pokemon?limit=100',
     timeout: 8000
 })

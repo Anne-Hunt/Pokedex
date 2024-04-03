@@ -2,7 +2,15 @@
 export class Pokemon {
 
     constructor(data) {
-
+        this.name = data.name
+        this.nickname = data.nickname
+        this.imgUrl = data.img
+        this.weight = data.weight
+        this.height = data.height
+        this.types = data.types
+        this.creatorId = data.creatorId
+        this.createdAt = data.createdAt
+        this.updatedAt = data.updatedAt
     }
 
 }
