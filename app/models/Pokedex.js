@@ -16,38 +16,39 @@ export class Pokemon {
 
     get OwnedPokedexListTemplate() {
         return `
-        <div>
-            <a role="button" onclick="app.SandboxController.setActivePoke(${this.name})">
-            <h4>${this.name}</h4>
-            </a>
-        </div>
+        <li><a class="dropdown-item text-dark" onclick="app.SandboxController.setActivePoke(${this.name})">${this.name}</a></li>
         `
     }
 
     get ActivePokeTemplate() {
         return `
         <div class="container-fluid">
-        <div class="row">
-        <div class="card d-flex justify-content-center">
-        <div class="card-title border border-warning border-4">
-        ${this.name}
+  <div class="row">
+    <div class="card bg-transparent border-none d-flex justify-content-center">
+      <div class="card-title border border-dark rounded bgmutedred border-4 p-2 px-4">
+        <div class="bg-white text-dark text-center">
+          <h2>${this.name}</h2>
         </div>
-        <div class="card-image">
-        <img src="${this.img}" alt="${this.nickname}">
-        </div>
-        <div class="card-body">
+      </div>
+      <div class="card-image d-flex justify-content-center">
+        <img src="${this.img}" alt="${this.nickname}" class="pokeimg">
+      </div>
+      <div class="card-body border border-dark border-5 bgmutedred rounded">
         <div class="card-subtitle">
-        <h3>${this.nickname}</h3>
+          <div class="d-flex justify-content-between text-dark">
+            <span class="card-text text-start">Height: ${this.height}</span>
+            <span class="card-text text-end">Weight: ${this.weight}</span>
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <p class="card-text text-start">Type: ${this.types}</p>
+            <button onclick="app.SandboxController.saveOwnedPokemon()"
+              class="btn btn-light border border-5 border-dark rounded text-dark text-end">Catchem</button>
+          </div>
         </div>
-        <p class="card-text">Height: ${this.height}</p>
-        <p class="card-text">Weight: ${this.weight}</p>
-        <p class="card-text">Type: ${this.types}</p>
-        </div>
-        </div>
-        <button onclick="app.SandboxController.saveOwnedPokemon()">Catchem</button>
-        </div>
-        </div> 
-        </div>
+      </div>
+    </div>
+  </div>
+</div>
         `
     }
 

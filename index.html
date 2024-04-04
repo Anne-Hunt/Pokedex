@@ -20,29 +20,26 @@
   <header>
     <nav class="navbar navbar-dark navbar-expand border-bottom  border-5 border-dark bgmutedred p-3">
       <div class="flex-grow-1 justify-content-start align-items-center d-flex" id="authstate"></div>
-      <button class="btn btn-white text-dark justify-content-end align-items-center d-flex navbar-toggler" type="button"
-        data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div id="owned-pokes" class="navbar-nav">
-          <!-- NAVLINKS -->
-          <!-- <a href="#/about" class="nav-link">About</a> -->
-        </div>
-      </div>
 
+      <div class="dropdown justify-content-end align-items-center d-flex">
+        <button class="btn btn-light border border-dark border-5 dropdown-toggle" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Owned Pokemon
+        </button>
+        <ul id="owned-pokes" class="dropdown-menu">
+        </ul>
+      </div>
     </nav>
   </header>
 
   <!-- SECTION -->
   <main class="container-fluid">
-    <section class="row">
+    <section class="row justify-content-evenly">
 
-      <div id="active-poke" class="col-6">
+      <div id="active-poke" class="col-6 p-3">
 
       </div>
-      <div id="poke-list" class="col-3">
+      <div id="poke-list" class="col-3 list bg-white rounded border border-dark border-5 text-dark p-3 mt-4">
 
       </div>
     </section>

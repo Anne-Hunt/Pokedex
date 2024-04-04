@@ -6,8 +6,8 @@ import { setHTML } from "../utils/Writer.js"
 
 export class SandboxController {
     constructor() {
-        // AppState.on('sandPokemons', this.getSandPokeData)
         AppState.on('account', this.getSandPokeData)
+        AppState.on('sandPokemons', this.drawOwnedPoke)
     }
 
     async getSandPokeData() {
