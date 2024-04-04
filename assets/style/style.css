@@ -27,6 +27,11 @@
   --c-blue-muted: #0074D9;
   --c-indigo-muted: #4b0082;
   --c-violet-muted: #B10DC9;
+  --c-pink: #fb8fe2;
+}
+
+* {
+  font-family: 'Press Start 2P', sans-serif;
 }
 
 body {
@@ -38,6 +43,10 @@ body {
 .bgmutedred {
   color: var(--c-white);
   background-color: var(--c-red-muted);
+}
+
+.borderpink {
+  border: solid 5px var(--c-pink);
 }
 
 .list {

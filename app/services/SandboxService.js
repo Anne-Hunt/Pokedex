@@ -21,12 +21,10 @@ class SandboxService {
     }
 
     async setActivePoke(pokeName) {
-        let response = await api.get('api', `/pokemon/${pokeName}`)
-        console.log('setting to active', response)
-        const activePoke = response.data
+        console.log('setting to active')
+        const activePoke = AppState.sandPokemons.find(pokemon => pokemon.name == pokeName)
         AppState.activePokemon = activePoke
         console.log(AppState.activePokemon)
-
     }
 
     async saveOwnedPokemon() {

@@ -29,10 +29,10 @@ export class SandboxController {
         }
     }
 
-    async setActivePoke() {
+    async setActivePoke(pokeName) {
         console.log('sandbox knows about request, sending')
         try {
-            let results = await sandboxService.setActivePoke()
+            await sandboxService.setActivePoke(pokeName)
         } catch (error) {
             console.log('errd, Pokefriend said no', error)
         }
@@ -46,10 +46,10 @@ export class SandboxController {
         setHTML('owned-pokes', ownedPokeList)
     }
 
-    drawActiveOwnedPoke(pokeName) {
-        console.log('drawing owned, singled out friend', pokeName)
-        sandboxService.setActivePoke(pokeName)
-    }
+    // drawActiveOwnedPoke(pokeName) {
+    //     console.log('drawing owned, singled out friend', pokeName)
+    //     setHTML('active-pokemon',)
+    // }
 
     trashPoke(pokeId) {
         console.log('request to trash a friend', pokeId)
