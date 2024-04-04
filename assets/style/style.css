@@ -1,4 +1,45 @@
-/* BASIC STYLES HERE */
+:root {
+  --c-navy: #001f3f;
+  --c-blue: #0074D9;
+  --c-aqua: #7FDBFF;
+  --c-teal: #39CCCC;
+  --c-purple: #B10DC9;
+  --c-indigo: #4b0082;
+  --c-fuchsia: #F012BE;
+  --c-maroon: #85144b;
+  --c-red: #FF4136;
+  --c-orange: #FF851B;
+  --c-yellow: #FFDC00;
+  --c-olive: #3D9970;
+  --c-green: #2ECC40;
+  --c-lime: #01FF70;
+  --c-black: #111111;
+  --c-grey: #AAAAAA;
+  --c-silver: #DDDDDD;
+  --c-white: #FFFFFF;
+  --c-primary: #8254ad;
+  --c-secondary: #603e80;
+  --c-tertiary: #ad68ed;
+  --c-red-muted: #FF4136;
+  --c-orange-muted: #FF851B;
+  --c-yellow-muted: #FFDC00;
+  --c-green-muted: #2ECC40;
+  --c-blue-muted: #0074D9;
+  --c-indigo-muted: #4b0082;
+  --c-violet-muted: #B10DC9;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1541415534056-fad380cd68a5?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  width: 100%;
+  background-size: contain;
+}
+
+.bgmutedred {
+  color: var(--c-white);
+  background-color: var(--c-red-muted);
+}
+
 .profile-picture {
   height: 200px;
   max-width: 100%;

@@ -1,10 +1,13 @@
+import { AppState } from "../AppState.js"
 import { sandboxService } from "../services/SandboxService.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
 
 
 export class SandboxController {
     constructor() {
-        this.getSandPokeData()
+        // AppState.on('sandPokemons', this.getSandPokeData)
+        AppState.on('account', this.getSandPokeData)
     }
 
     async getSandPokeData() {
@@ -15,6 +18,14 @@ export class SandboxController {
         } catch (error) {
             console.log(error)
             Pop.toast("Sandbox devoid of results", 'error')
+        }
+    }
+    async saveOwnedPokemon() {
+        try {
+            await sandboxService.saveOwnedPokemon()
+        } catch (error) {
+            Pop.toast("Can't own your friends", 'error')
+            console.error(error)
         }
     }
 
@@ -29,11 +40,15 @@ export class SandboxController {
 
     drawOwnedPoke() {
         console.log('drawing owned friends 🚔')
+        const pokemons = AppState.sandPokemons
+        let ownedPokeList = ''
+        pokemons.forEach(pokemon => ownedPokeList += pokemon.OwnedPokedexListTemplate)
+        setHTML('owned-pokes', ownedPokeList)
     }
 
-    drawActiveOwnedPoke(pokeId) {
-        console.log('drawing owned, singled out friend', pokeId)
-
+    drawActiveOwnedPoke(pokeName) {
+        console.log('drawing owned, singled out friend', pokeName)
+        sandboxService.setActivePoke(pokeName)
     }
 
     trashPoke(pokeId) {

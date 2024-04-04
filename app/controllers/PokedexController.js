@@ -2,6 +2,7 @@ import { AppState } from "../AppState.js"
 import { Pokemon } from "../models/Pokedex.js"
 import { pokedexService } from "../services/PokedexService.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
 
 
 export class PokedexController {
@@ -17,27 +18,35 @@ export class PokedexController {
             const response = await pokedexService.getPokeData()
             console.log('getting data', response)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             Pop.toast("Oh no, Pokedudes are unable to be found", 'error')
         }
     }
 
     async setActivePoke(pokeName) {
-        console.log('sending request to service', pokeName)
-        let response = await pokedexService.setActivePoke(pokeName)
-        console.log('service sent', response)
+        try {
+            console.log('sending request to service', pokeName)
+            let response = await pokedexService.setActivePoke(pokeName)
+            console.log('service sent', response)
+        } catch (error) {
+            console.error(error)
+            Pop.toast('Whoa no, we have an error', 'error')
+        }
 
     }
 
-    drawActivePoke(pokeName) {
-        console.log('drawing pokemon', pokeName)
-
+    drawActivePoke() {
+        console.log('drawing pokemon', AppState.activePokemon)
+        const activePokemon = AppState.activePokemon
+        setHTML('active-poke', activePokemon.ActivePokeTemplate)
     }
 
     drawPokeList() {
         console.log('making em all appear')
+        const pokemons = AppState.pokemons
         let pokeList = ''
-        AppState.pokemons.forEach(pokemon => pokeList += Pokemon.PokedexListTemplate)
+        pokemons.forEach(pokemon => pokeList += Pokemon.PokedexListTemplate(pokemon.name))
+        setHTML('poke-list', pokeList)
     }
 
 

@@ -4,7 +4,7 @@ export class Pokemon {
     constructor(data) {
         this.name = data.name
         this.nickname = data.nickname
-        this.imgUrl = data.img
+        this.img = data.img || data.sprites.front_default
         this.weight = data.weight
         this.height = data.height
         this.types = data.types
@@ -16,6 +16,11 @@ export class Pokemon {
 
     get OwnedPokedexListTemplate() {
         return `
+        <div>
+            <a role="button" onclick="app.SandboxController.setActivePoke(${this.name})">
+            <h4>${this.name}</h4>
+            </a>
+        </div>
         `
     }
 
@@ -28,7 +33,7 @@ export class Pokemon {
         ${this.name}
         </div>
         <div class="card-image">
-        <img src="${this.imgUrl}" alt="${this.nickname}">
+        <img src="${this.img}" alt="${this.nickname}">
         </div>
         <div class="card-body">
         <div class="card-subtitle">
@@ -39,19 +44,18 @@ export class Pokemon {
         <p class="card-text">Type: ${this.types}</p>
         </div>
         </div>
-        
+        <button onclick="app.SandboxController.saveOwnedPokemon()">Catchem</button>
         </div>
-        </div>
-        
+        </div> 
         </div>
         `
     }
 
-    static get PokedexListTemplate(pokemon.name,) {
+    static PokedexListTemplate(pokemonName) {
         return `
         <div>
-    <a role="button" onclick="app.PokedexController.setActivePoke(${this.name})">
-    <h4>${this.name}</h4>
+    <a role="button" onclick="app.PokedexController.setActivePoke('${pokemonName}')">
+    <h4>${pokemonName}</h4>
     </a>
     </div>
         `

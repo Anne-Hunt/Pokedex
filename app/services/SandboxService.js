@@ -14,8 +14,8 @@ class SandboxService {
 
     async getSandPokeData() {
         console.log('service sees request for poke')
-        let response = await api.get('api')
-        console.log('response dun run', response)
+        let response = await api.get('api/pokemon')
+        console.log('response dun run', response.data)
         const mySandPokemons = response.data.map(pokemon => new Pokemon(pokemon))
         AppState.sandPokemons = mySandPokemons
     }
@@ -27,6 +27,14 @@ class SandboxService {
         AppState.activePokemon = activePoke
         console.log(AppState.activePokemon)
 
+    }
+
+    async saveOwnedPokemon() {
+        console.log('saving');
+        const response = await api.post('api/pokemon', AppState.activePokemon)
+        console.log('you own friends bruh', response.data);
+        const pokemon = new Pokemon(response.data) // convert one object into a classed model
+        AppState.sandPokemons.push(pokemon)
     }
 
     trashPoke(pokeName) {
