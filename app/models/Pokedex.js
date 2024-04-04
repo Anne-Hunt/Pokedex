@@ -1,23 +1,24 @@
-function typeMagic(types) {
-  let typeString = ''
-  let typeArray = types
-  for (let i = 0; i > typeArray.length; i++) {
-    typeString += typeArray.i.type.name
-  }
-  return typeString
-}
+// function typeMagic(types) {
+//   let typeString = ''
+//   let typeArray = types
+//   for (let i = 0; i > typeArray.length; i++) {
+//     let name = typeArray.i.type.name
+//     name.forEach(name => typeString += name)
+//   }
+//   return typeString
+// }
 
 
 export class Pokemon {
 
-  /**@params {name: string, nickname: string, img: string, weight: string, height: string, types: []} */
+  /**@params {name: string, nickname: string, img: string, weight: string, height: string, types: [[[]]]} */
   constructor(data) {
     this.name = data.name
     this.nickname = data.nickname
     this.img = data.img || data.sprites.front_default
     this.weight = data.weight
     this.height = data.height
-    this.types = typeMagic(data.types)
+    this.types = data.types
     this.creatorId = data.creatorId
     this.createdAt = data.createdAt
     this.updatedAt = data.updatedAt
@@ -49,7 +50,7 @@ export class Pokemon {
             <span class="card-text text-end">Weight: ${this.weight}</span>
           </div>
           <div class="d-flex justify-content-between align-items-center mt-2">
-            <p class="card-text text-dark">Type: ${this.types}</p>
+            <p class="card-text text-dark">Type: ${this.typeMagic}</p>
             <button onclick="app.SandboxController.saveOwnedPokemon()"
               class="btn btn-light border border-5 border-dark rounded text-dark py-0">Catchem</button>
           </div>
@@ -61,6 +62,12 @@ export class Pokemon {
         `
   }
 
+  get typeMagic() {
+    let typeString = ''
+    this.types.forEach(type => typeString += type.type.name)
+    return typeString
+  }
+
   static PokedexListTemplate(pokemonName) {
     return `
         <div>
@@ -70,6 +77,7 @@ export class Pokemon {
     </div>
         `
   }
+
 }
 
 // name: String, required

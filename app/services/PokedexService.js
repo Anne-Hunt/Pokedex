@@ -28,7 +28,7 @@ class PokedexService {
         console.log('setting to active', response.data)
         const activePoke = new Pokemon(response.data)
         AppState.activePokemon = activePoke
-        console.log(AppState.activePokemon)
+        console.log('check this one', AppState.activePokemon)
     }
 
 }

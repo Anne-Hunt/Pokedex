@@ -8,7 +8,7 @@ class ObservableAppState extends EventEmitter {
   /**@type {import('./models/Account.js').Account | null} */
   account = null
 
-  /**@type {{name: String, index: String, url: String}[]} */
+  /**@type {{Pokemon}[]} */
   pokemons = []
 
   activePokemon = null
